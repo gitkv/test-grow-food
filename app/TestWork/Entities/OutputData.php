@@ -88,7 +88,7 @@ class OutputData
      * @param Carbon $orderDateTo
      * @return OutputData
      */
-    public function setOrderDateTo(Carbon $orderDateTo) : OutputData
+    public function setOrderDateTo(?Carbon $orderDateTo) : OutputData
     {
         $this->orderDateTo = $orderDateTo;
 
@@ -126,7 +126,7 @@ class OutputData
      * @param Carbon $deliveryDateTo
      * @return OutputData
      */
-    public function setDeliveryDateTo(Carbon $deliveryDateTo) : OutputData
+    public function setDeliveryDateTo(?Carbon $deliveryDateTo) : OutputData
     {
         $this->deliveryDateTo = $deliveryDateTo;
 
