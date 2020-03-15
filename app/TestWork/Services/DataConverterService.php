@@ -6,6 +6,8 @@ namespace App\TestWork\Services;
 
 use App\TestWork\Entities\InputData;
 use App\TestWork\Entities\OutputData;
+use App\TestWork\Collections\InputDataCollection;
+use App\TestWork\Collections\OutputDataCollection;
 use Carbon\Carbon;
 use Tightenco\Collect\Support\Collection;
 
@@ -23,12 +25,12 @@ class DataConverterService
 
     /**
      * DataConverterService constructor.
-     * @param Collection $inputDataCollection
+     * @param InputDataCollection $inputDataCollection
      */
-    public function __construct(Collection $inputDataCollection)
+    public function __construct(InputDataCollection $inputDataCollection)
     {
         $this->inputDataCollection = $inputDataCollection;
-        $this->outputDataCollection = new Collection();
+        $this->outputDataCollection = new OutputDataCollection();
     }
 
     /**
@@ -39,8 +41,6 @@ class DataConverterService
         foreach ($this->inputDataCollection as $index => $inputData) {
             $this->calculate($inputData, $this->inputDataCollection->get(++$index));
         }
-        var_dump($this->outputDataCollection);
-        die;
 
         return $this->outputDataCollection;
     }
@@ -92,14 +92,14 @@ class DataConverterService
         }
         //если элемент последний
         //добавляем дату окончания доставки равную концу месяца
-        //может быть там надо оталкиватся от самой последней даты всех позиций, незнаю...
+        //может быть там надо оталкиватся от самой первой (ближайшей) даты доставки всех позиций, незнаю...
         else {
             $this->outputDataCollection->push($this->outputDataBuilder(
                 $inputData->getPositionId(),
                 $inputData->getOrderDateFrom(),
                 null,
                 $inputData->getDeliveryDateFrom(),
-                $inputData->getDeliveryDateFrom()->copy()->endOfMonth(),
+                $inputData->getDeliveryDateFrom()->copy()->endOfMonth()->startOfDay(),
                 $inputData->getPrice()
             ));
         }

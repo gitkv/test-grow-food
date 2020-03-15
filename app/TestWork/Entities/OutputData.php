@@ -11,32 +11,32 @@ class OutputData
     /**
      * @var int
      */
-    protected $positionId;
+    public $positionId;
 
     /**
      * @var Carbon
      */
-    protected $orderDateFrom;
+    public $orderDateFrom;
 
     /**
      * @var Carbon
      */
-    protected $orderDateTo;
+    public $orderDateTo;
 
     /**
      * @var Carbon
      */
-    protected $deliveryDateFrom;
+    public $deliveryDateFrom;
 
     /**
      * @var Carbon
      */
-    protected $deliveryDateTo;
+    public $deliveryDateTo;
 
     /**
      * @var float
      */
-    protected $price;
+    public $price;
 
     /**
      * @return int
@@ -77,9 +77,9 @@ class OutputData
     }
 
     /**
-     * @return Carbon
+     * @return Carbon|null
      */
-    public function getOrderDateTo() : Carbon
+    public function getOrderDateTo() : ?Carbon
     {
         return $this->orderDateTo;
     }
@@ -115,9 +115,9 @@ class OutputData
     }
 
     /**
-     * @return Carbon
+     * @return Carbon|null
      */
-    public function getDeliveryDateTo() : Carbon
+    public function getDeliveryDateTo() : ?Carbon
     {
         return $this->deliveryDateTo;
     }
