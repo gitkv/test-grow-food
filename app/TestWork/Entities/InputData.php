@@ -5,13 +5,14 @@ namespace App\TestWork\Entities;
 
 
 use Carbon\Carbon;
+use Tightenco\Collect\Contracts\Support\Arrayable;
 
 /**
  * Входящие данные
  * Class InputData
  * @package App\TestWork\Entities
  */
-class InputData
+class InputData implements Arrayable
 {
     /**
      * @var int
@@ -107,5 +108,18 @@ class InputData
         $this->price = $price;
 
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'positionId'       => $this->getPositionId(),
+            'orderDateFrom'    => $this->getOrderDateFrom()->format('Y-m-d'),
+            'deliveryDateFrom' => $this->getDeliveryDateFrom()->format('Y-m-d'),
+            'price'            => $this->getPrice(),
+        ];
     }
 }
