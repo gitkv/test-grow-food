@@ -4,22 +4,26 @@
 namespace App\TestWork\Services;
 
 
-use App\TestWork\Entities\InputData;
-use App\TestWork\Entities\OutputData;
 use App\TestWork\Collections\InputDataCollection;
 use App\TestWork\Collections\OutputDataCollection;
+use App\TestWork\Entities\InputData;
+use App\TestWork\Entities\OutputData;
 use Carbon\Carbon;
-use Tightenco\Collect\Support\Collection;
 
+/**
+ * Сервис конвертации (денормализации) входящих данных в исходящие
+ * Class DataConverterService
+ * @package App\TestWork\Services
+ */
 class DataConverterService
 {
     /**
-     * @var Collection
+     * @var InputDataCollection
      */
     protected $inputDataCollection;
 
     /**
-     * @var Collection
+     * @var OutputDataCollection
      */
     protected $outputDataCollection;
 
@@ -34,7 +38,7 @@ class DataConverterService
     }
 
     /**
-     * @return Collection <OutputData>
+     * @return OutputDataCollection <OutputData>
      */
     public function convert()
     {

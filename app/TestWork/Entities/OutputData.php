@@ -6,6 +6,11 @@ namespace App\TestWork\Entities;
 
 use Carbon\Carbon;
 
+/**
+ * Исходящие данные
+ * Class OutputData
+ * @package App\TestWork\Entities
+ */
 class OutputData
 {
     /**

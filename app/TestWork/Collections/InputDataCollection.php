@@ -7,9 +7,17 @@ namespace App\TestWork\Collections;
 use Carbon\Carbon;
 use Tightenco\Collect\Support\Collection;
 
+/**
+ * Коллекция входящих данных
+ * Class InputDataCollection
+ * @package App\TestWork\Collections
+ */
 class InputDataCollection extends Collection implements DataCollectionInterface
 {
 
+    /**
+     * @inheritDoc
+     */
     public function findPrice(int $positionId, Carbon $orderDate, Carbon $deliveryDate) : DataCollectionInterface
     {
         $price = $this

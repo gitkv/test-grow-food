@@ -6,9 +6,13 @@ namespace App\TestWork\Entities;
 
 use Carbon\Carbon;
 
+/**
+ * Входящие данные
+ * Class InputData
+ * @package App\TestWork\Entities
+ */
 class InputData
 {
-
     /**
      * @var int
      */
