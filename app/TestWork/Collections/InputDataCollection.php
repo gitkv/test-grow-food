@@ -14,14 +14,14 @@ class InputDataCollection extends Collection implements DataCollectionInterface
     {
         $price = $this
             ->filter(function ($obj) use ($orderDate, $deliveryDate) {
-                return $obj->deliveryDateFrom->timestamp <= $deliveryDate->timestamp
-                    && $obj->orderDateFrom->timestamp <= $orderDate->timestamp;
+                return $obj->getDeliveryDateFrom()->timestamp <= $deliveryDate->timestamp
+                    && $obj->getOrderDateFrom()->timestamp <= $orderDate->timestamp;
             })
             ->sortByDesc(function ($obj) {
-                return $obj->orderDateFrom->timestamp;
+                return $obj->getOrderDateFrom()->timestamp;
             })
             ->sortByDesc(function ($obj) {
-                return $obj->deliveryDateFrom->timestamp;
+                return $obj->getDeliveryDateFrom()->timestamp;
             });
 
         return $price->take(1);

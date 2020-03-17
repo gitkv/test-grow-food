@@ -11,32 +11,32 @@ class OutputData
     /**
      * @var int
      */
-    public $positionId;
+    protected $positionId;
 
     /**
      * @var Carbon
      */
-    public $orderDateFrom;
+    protected $orderDateFrom;
 
     /**
      * @var Carbon
      */
-    public $orderDateTo;
+    protected $orderDateTo;
 
     /**
      * @var Carbon
      */
-    public $deliveryDateFrom;
+    protected $deliveryDateFrom;
 
     /**
      * @var Carbon
      */
-    public $deliveryDateTo;
+    protected $deliveryDateTo;
 
     /**
      * @var float
      */
-    public $price;
+    protected $price;
 
     /**
      * @return int

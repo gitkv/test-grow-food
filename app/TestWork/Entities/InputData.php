@@ -12,22 +12,22 @@ class InputData
     /**
      * @var int
      */
-    public $positionId;
+    protected $positionId;
 
     /**
      * @var Carbon
      */
-    public $orderDateFrom;
+    protected $orderDateFrom;
 
     /**
      * @var Carbon
      */
-    public $deliveryDateFrom;
+    protected $deliveryDateFrom;
 
     /**
      * @var float
      */
-    public $price;
+    protected $price;
 
     /**
      * @return int
