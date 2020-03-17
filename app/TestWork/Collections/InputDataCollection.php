@@ -13,15 +13,15 @@ class InputDataCollection extends Collection implements DataCollectionInterface
     public function findPrice(int $positionId, Carbon $orderDate, Carbon $deliveryDate) : DataCollectionInterface
     {
         $price = $this
-            ->sortByDesc(function ($obj) {
-                return $obj->deliveryDateFrom->timestamp;
+            ->filter(function ($obj) use ($orderDate, $deliveryDate) {
+                return $obj->deliveryDateFrom->timestamp <= $deliveryDate->timestamp
+                    && $obj->orderDateFrom->timestamp <= $orderDate->timestamp;
             })
             ->sortByDesc(function ($obj) {
                 return $obj->orderDateFrom->timestamp;
             })
-            ->filter(function ($obj) use ($orderDate, $deliveryDate) {
-                return $obj->deliveryDateFrom->timestamp <= $deliveryDate->timestamp
-                    && $obj->orderDateFrom->timestamp <= $orderDate->timestamp;
+            ->sortByDesc(function ($obj) {
+                return $obj->deliveryDateFrom->timestamp;
             });
 
         return $price->take(1);
